@@ -9,14 +9,21 @@
         int totalWorkingHours;
         int workingHoursPerMonth;
 
-        static void calculateWage(int wagePerHour, int fullDayHour, int partTimeHour, int workingDayPerMonth,
-                                  int totalWorkingHours, int workingHoursPerMonth) {
+        public EmployeeWage(int wagePerHour, int fullDayHour, int partTimeHour, int workingDayPerMonth, int workingHoursPerMonth) {
+            this.wagePerHour = wagePerHour;
+            this.fullDayHour = fullDayHour;
+            this.partTimeHour = partTimeHour;
+            this.workingDayPerMonth = workingDayPerMonth;
+            this.totalWorkingHours = totalWorkingHours;
+            this.workingHoursPerMonth = workingHoursPerMonth;
+        }
+
+        public void calculateWage() {
             int workingDays = 0;
             int totalWage = 0;
             while (workingDays < workingDayPerMonth && totalWorkingHours < workingHoursPerMonth) {
                 int empPresent = (int) (Math.floor(Math.random() * 10) % 3); // number b/w 0 and 1
                 int empWage = 0;
-
                 if (empPresent == IS_PART_TIME) {
                     System.out.println("Part time");
                 } else if (empPresent == IS_FULL_TIME) {
@@ -24,7 +31,6 @@
                 } else if (empPresent == 0) {
                     System.out.println("Absent");
                 }
-
                 switch (empPresent) {
                     case IS_PART_TIME:
 
@@ -42,9 +48,7 @@
                         break;
                     default:
                         empWage = 0;
-
                 }
-
                 totalWage = totalWage + empWage;
                 System.out.println("Total Wage for Day " + (workingDays + 1) + " = " + totalWage);
                 workingDays++;
@@ -52,11 +56,13 @@
             System.out.println("Total Working Days :" + workingDays);
             System.out.println("Total Working Hours :" + totalWorkingHours);
             System.out.println("Employee Wage :" + totalWage);
-
         }
 
         public static void main(String[] args) {
-            calculateWage(20, 8, 4, 20, 1, 100);
+            EmployeeWage emp = new EmployeeWage(20,10,5,22,90);
+            emp.calculateWage();
+            EmployeeWage emp1 = new EmployeeWage(22,9,4,20,88);
+            emp1.calculateWage();
         }
 
     }

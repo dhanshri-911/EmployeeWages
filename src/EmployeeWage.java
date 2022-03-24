@@ -17,7 +17,6 @@
             this.totalWorkingHours = totalWorkingHours;
             this.workingHoursPerMonth = workingHoursPerMonth;
         }
-
         public void calculateWage() {
             int workingDays = 0;
             int totalWage = 0;
@@ -57,7 +56,6 @@
             System.out.println("Total Working Hours :" + totalWorkingHours);
             System.out.println("Employee Wage :" + totalWage);
         }
-
         public static void main(String[] args) {
             EmployeeWage emp = new EmployeeWage(20,10,5,22,90);
             emp.calculateWage();

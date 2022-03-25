@@ -71,9 +71,9 @@
         }
 
         public static void main(String[] args) {
-                EmployeeWageBuilder.createEmployeeWage();
-                //System.out.println(EmployeeWageBuilder.arrayList);
-             for(EmployeeWage employeeObject : EmployeeWageBuilder.arrayList){
+                EmployeeWageBuilder empWage = new EmployeeWageBuilderImpl();
+                    empWage.createWageBuilder();
+             for(EmployeeWage employeeObject : EmployeeWageBuilderImpl.arrayList){
                  System.out.println(employeeObject);
             }
         }

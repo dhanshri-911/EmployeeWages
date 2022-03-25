@@ -1,5 +1,6 @@
+import java.util.ArrayList;
 
-    public class EmployeeWage {
+public class EmployeeWage {
             static final int IS_PART_TIME = 1;
             static final int IS_FULL_TIME = 2;
             int wagePerHour;
@@ -8,6 +9,8 @@
             int workingDayPerMonth;
             int totalWorkingHours;
             int workingHoursPerMonth;
+            ArrayList<Integer> dailyaWage = new ArrayList<>();
+            int totalWage = 0;
 
             public EmployeeWage(int wagePerHour, int fullDayHour, int partTimeHour, int workingDayPerMonth, int workingHoursPerMonth) {
                 this.wagePerHour = wagePerHour;
@@ -20,7 +23,6 @@
 
             public void calculateWage() {
                 int workingDays = 0;
-                int totalWage = 0;
                 while (workingDays < workingDayPerMonth && totalWorkingHours < workingHoursPerMonth) {
                     int empPresent = (int) (Math.floor(Math.random() * 10) % 3); // number b/w 0 and 1
                     int empWage = 0;
@@ -49,6 +51,7 @@
                         default:
                             empWage = 0;
                     }
+                    dailyaWage.add(empWage);
                     totalWage = totalWage + empWage;
                     System.out.println("Total Wage for Day " + (workingDays + 1) + " = " + totalWage);
                     workingDays++;
@@ -58,19 +61,22 @@
                 System.out.println("Employee Wage :" + totalWage);
             }
 
-        @Override
-        public String toString() {
-            return "EmployeeWage{" +
-                    "wagePerHour=" + wagePerHour +
-                    ", fullDayHour=" + fullDayHour +
-                    ", partTimeHour=" + partTimeHour +
-                    ", workingDayPerMonth=" + workingDayPerMonth +
-                    ", totalWorkingHours=" + totalWorkingHours +
-                    ", workingHoursPerMonth=" + workingHoursPerMonth +
-                    '}';
-        }
 
-        public static void main(String[] args) {
+    @Override
+    public String toString() {
+        return "EmployeeWage{" +
+                "wagePerHour=" + wagePerHour +
+                ", fullDayHour=" + fullDayHour +
+                ", partTimeHour=" + partTimeHour +
+                ", workingDayPerMonth=" + workingDayPerMonth +
+                ", totalWorkingHours=" + totalWorkingHours +
+                ", workingHoursPerMonth=" + workingHoursPerMonth +
+                ", dailyaWage=" + dailyaWage +
+                ", totalWage=" + totalWage +
+                '}';
+    }
+
+    public static void main(String[] args) {
                 EmployeeWageBuilder empWage = new EmployeeWageBuilderImpl();
                     empWage.createWageBuilder();
              for(EmployeeWage employeeObject : EmployeeWageBuilderImpl.arrayList){
